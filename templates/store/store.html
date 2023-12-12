@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            {% for product in products %}
+            <div class="col-md-4 py-4">
+                <div class="card" style="width: 18rem;">
+                    <h4 class="text-center">{{ product.category }}</h4>
+                    <h6 class="card-title text-center">{{ product.name }}</h6>
+                    <img src="{{ product.imageURL }}" class="card-img-top" width="350" height="300">
+                    <div class="card-body">
+                        <h5>{{ product.price|floatformat:2 }}RON</h5>
+                        <button data-product={{ product.id }} data-action="add" class="btn btn-primary add-btn update-cart">Add to cart</button>
+{#                        <a href="" class="btn btn-secondary">View details</a>#}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
